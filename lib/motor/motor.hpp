@@ -1,6 +1,7 @@
-class Motor {
+class Motor
+{
 public:
-    char* direction = "RIGHT";
+    char *direction = "RIGHT";
     int position = 0;
     int distance = 0;
     void next_motor_position();

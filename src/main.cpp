@@ -1,14 +1,11 @@
 #include <Arduino.h>
+#include <motor.hpp>
 #include <Ultrasonic.h>
 #include <Servo.h>
-#include "motor.hpp"
-
-int pos = 0;
-int distance = 0;
 
 Ultrasonic ultrasonic(A5, A4);
-Motor * motor;
 Servo servo;
+Motor * motor;
 
 bool RIGHT = true;
 
@@ -36,16 +33,15 @@ void traz()
 {
     Serial.println("TRAZ");
 }
-char *direction = "RIGHT";
 
 void loop()
 {
     motor->next_motor_position();
     servo.write(motor->position);
 
-    distance = ultrasonic.read();
+    motor->distance = ultrasonic.read();
     Serial.println("Distance: ");
-    Serial.println(distance);
+    Serial.println(motor->distance);
 
     delay(10);
 }
